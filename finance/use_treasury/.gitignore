@@ -1,5 +1,2 @@
-build/*
-traces/*
-.trace
-.coverage*
-Pub.*.toml
+build/
+.DS_Store
