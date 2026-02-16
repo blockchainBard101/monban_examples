@@ -3,8 +3,7 @@ name = "game_core"
 edition = "2024"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "868c226359ef914f1f3b080518f27eb13d8967f5" }
-monban = { local = "../../../../access_control" }
+monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v1" }
 
 [addresses]
 game_core = "0x0"

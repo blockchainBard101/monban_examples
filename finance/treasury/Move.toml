@@ -6,7 +6,7 @@ edition = "2024"  # edition = "legacy" to use legacy (pre-2024) Move
 
 [dependencies]
 
-monban = { local = "../../../../access_control" }
+monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v1" }
 
 
 # Read more about the package management system options:

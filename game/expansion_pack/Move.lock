@@ -5,13 +5,13 @@
 version = 4
 
 [pinned.testnet.MoveStdlib]
-source = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/move-stdlib", rev = "868c226359ef914f1f3b080518f27eb13d8967f5" }
+source = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/move-stdlib", rev = "563c15820b27dec9cbe75f826a3b6243ef44da1a" }
 use_environment = "testnet"
 manifest_digest = "C4FE4C91DE74CBF223B2E380AE40F592177D21870DC2D7EB6227D2D694E05363"
 deps = {}
 
 [pinned.testnet.Sui]
-source = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "868c226359ef914f1f3b080518f27eb13d8967f5" }
+source = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "563c15820b27dec9cbe75f826a3b6243ef44da1a" }
 use_environment = "testnet"
 manifest_digest = "7AFB66695545775FBFBB2D3078ADFD084244D5002392E837FDE21D9EA1C6D01C"
 deps = { MoveStdlib = "MoveStdlib" }
@@ -19,17 +19,17 @@ deps = { MoveStdlib = "MoveStdlib" }
 [pinned.testnet.expansion_pack]
 source = { root = true }
 use_environment = "testnet"
-manifest_digest = "AE2628D80B1A70B5E30A3490FB4500C95B3B40E1A828867B81F26E94282A3057"
-deps = { Sui = "Sui", game_core = "game_core", monban = "monban" }
+manifest_digest = "C226C147B299AF8394DBBE8535552DDE46E565E740D8FADA301CB3A2B77BA6B1"
+deps = { game_core = "game_core", monban = "monban", std = "MoveStdlib", sui = "Sui" }
 
 [pinned.testnet.game_core]
 source = { local = "../game_core" }
 use_environment = "testnet"
-manifest_digest = "DF72CEAC87E8377AB946D46AD93C65AEEBCC2FD0A26D9AC18F194369E8F78A41"
-deps = { Sui = "Sui", monban = "monban" }
+manifest_digest = "49CE74C09CC1D12D31D4612AF7D76CCB95CAECD5B09F4666E7931E86A052C8C5"
+deps = { monban = "monban", std = "MoveStdlib", sui = "Sui" }
 
 [pinned.testnet.monban]
-source = { local = "../../../../access_control" }
+source = { git = "https://github.com/blockchainBard101/monban.git", subdir = ".", rev = "ce0783e2b0f951e32357cc3dce5aff6e9d924bdc" }
 use_environment = "testnet"
 manifest_digest = "5745706258F61D6CE210904B3E6AE87A73CE9D31A6F93BE4718C442529332A87"
 deps = { std = "MoveStdlib", sui = "Sui" }
