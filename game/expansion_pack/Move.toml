@@ -1,0 +1,11 @@
+[package]
+name = "expansion_pack"
+edition = "2024"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "868c226359ef914f1f3b080518f27eb13d8967f5" }
+monban = { local = "../../../../access_control" }
+game_core = { local = "../game_core" }
+
+[addresses]
+expansion_pack = "0x0"
