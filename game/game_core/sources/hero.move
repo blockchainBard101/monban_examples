@@ -5,6 +5,8 @@ use std::string::String;
 
 public struct HERO has drop {}
 
+public struct HeroMarker has drop, store {}
+
 public struct Hero has key, store {
     id: UID,
     name: String,
@@ -13,7 +15,7 @@ public struct Hero has key, store {
 }
 
 fun init(otw: HERO, ctx: &mut TxContext) {
-    monban::create_and_claim(otw, ctx);
+    monban::create_and_claim(otw, HeroMarker{}, ctx);
 }
 
 public fun create_hero(name: String, ctx: &mut TxContext): Hero {
@@ -25,14 +27,14 @@ public fun create_hero(name: String, ctx: &mut TxContext): Hero {
     }
 }
 
-public fun level_up(hero: &mut Hero, registry: &AccessRegistry, witness: Witness) {
+public fun level_up(hero: &mut Hero, registry: &AccessRegistry<HeroMarker>, witness: Witness) {
     monban::verify_access(registry, witness);
     hero.level = hero.level + 1;
 }
 
 public fun whitelist_package(
-    admin_cap: &AdminCap,
-    registry: &mut AccessRegistry,
+    admin_cap: &AdminCap<HeroMarker>,
+    registry: &mut AccessRegistry<HeroMarker>,
     package_id: String,
 ) {
     monban::whitelist_package(registry, admin_cap, package_id);

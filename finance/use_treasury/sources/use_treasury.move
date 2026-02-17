@@ -1,13 +1,13 @@
 module use_treasury::use_treasury;
 
 use monban::monban::{Self, AccessRegistry};
-use treasury::treasury::{Self, Treasury};
+use treasury::treasury::{Self, Treasury, Marker};
 
 public struct W has drop {}
 
 public fun remove_from_treasury(
     treasury: &mut Treasury,
-    access_registry: &AccessRegistry,
+    access_registry: &AccessRegistry<Marker>,
     ctx: &mut TxContext,
 ) {
     let witness = monban::create_witness(W {});

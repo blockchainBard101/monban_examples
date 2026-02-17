@@ -8,13 +8,15 @@ use sui::sui::SUI;
 
 public struct TREASURY has drop {}
 
+public struct Marker has drop, store {}
+
 public struct Treasury has key {
     id: UID,
     bal: Balance<SUI>,
 }
 
 fun init(otw: TREASURY, ctx: &mut TxContext) {
-    monban::create_and_claim(otw, ctx);
+    monban::create_and_claim(otw, Marker{}, ctx);
 
     let treasury = Treasury {
         id: object::new(ctx),
@@ -24,8 +26,8 @@ fun init(otw: TREASURY, ctx: &mut TxContext) {
 }
 
 public fun whitelist_package(
-    admin_cap: &AdminCap,
-    registry: &mut AccessRegistry,
+    admin_cap: &AdminCap<Marker>,
+    registry: &mut AccessRegistry<Marker>,
     package_id: String,
 ) {
     monban::whitelist_package(registry, admin_cap, package_id);
@@ -37,7 +39,7 @@ public fun add_to_treasury(treasury: &mut Treasury, payment: Coin<SUI>) {
 
 public fun withdraw_from_treasury(
     treasury: &mut Treasury,
-    registry: &AccessRegistry,
+    registry: &AccessRegistry<Marker>,
     witness: Witness,
     amount: u64,
     ctx: &mut TxContext,
