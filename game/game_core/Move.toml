@@ -3,7 +3,7 @@ name = "game_core"
 edition = "2024"
 
 [dependencies]
-monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v1" }
+monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v2" }
 
 [addresses]
 game_core = "0x0"

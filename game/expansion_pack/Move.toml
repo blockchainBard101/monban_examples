@@ -3,7 +3,7 @@ name = "expansion_pack"
 edition = "2024"
 
 [dependencies]
-monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v1" }
+monban = { git = "https://github.com/blockchainBard101/monban.git", rev = "testnet/v2" }
 game_core = { local = "../game_core" }
 
 [addresses]
